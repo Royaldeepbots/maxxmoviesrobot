@@ -13,7 +13,7 @@ async def help_handler(_, event: Message):
             InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
             ],
 
-             [InlineKeyboardButton("Watch Tutorial",url='https://youtu.be/teyT888yRpk'),
+             [InlineKeyboardButton("Owner",url='https://t.me/Dreamer999'),
              InlineKeyboardButton("Help", callback_data="Help_msg")
              ]
         ])
@@ -45,7 +45,7 @@ async def start_handler(_,event: Message):
     )
 
 VERIFY = {}
-@Client.on_message(filters.command("Verify") & filters.group)
+@Client.on_message(filters.command("request") & filters.group)
 async def request_handler(c,m: Message):
     global VERIFY
     chat_id = m.chat.id
@@ -77,10 +77,10 @@ async def request_handler(c,m: Message):
         return await m.reply_text(f"Your group may not have access to add your own DB Channel or may have expired. Please request access to the admin" ,reply_markup=REPLY_MARKUP ,disable_web_page_preview=True)
 
     else:
-        return await m.reply_text("Your group already have access to /db")
+        return await m.reply_text("Your group already have access to /addb")
 
 
-@Client.on_message(filters.command("db") & filters.group)
+@Client.on_message(filters.command("addb") & filters.group)
 async def addb_handler(c, m: Message):
     global VERIFY
     chat_id = m.chat.id
